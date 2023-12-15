@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if data %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Roll</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Phone_Number</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for st in data %}
+    <tr>
+      <td>{{st.roll}}</td>
+      <td>{{st.Name}}</td>
+      <td>{{st.phone_number}}</td>
+      <td>{{st.email}}</td>
+      <td>{{st.address}}</td>
+      <td>{{st.cls_duration }}</td>
+      <td>{{st.image}}</td>
+      {% comment %} <td><a class="btn btn-danger text-white" href="{% url 'delete_student' st.roll %}">Delete</a></td> {% endcomment %}
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{% else %}
+<h3>No data available to show</h3>
+{% endif%}
+
+{% endblock content %}
